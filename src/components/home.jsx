@@ -15,7 +15,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="w-full min-h-screen text-gray-600 px-6 py-12 bg-transparent flex flex-col">
+    <div className="w-full min-h-screen text-gray-600 px-6 py-12 bg-gray-100 flex flex-col">
             {/* Top Spacer - increased height */}
             <div className="h-24 md:h-36 lg:h-48" />
             {/* Main Content - Centered Hero */}

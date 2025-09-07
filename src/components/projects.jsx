@@ -195,8 +195,8 @@ export default function Projects() {
 
                 {/* Project Modal */}
                 {selectedProject && (
-                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                        <div className="bg-white rounded-3xl max-w-4xl max-h-[90vh] overflow-y-auto">
+                    <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-[9999] flex items-center justify-center p-4">
+                        <div className="bg-white rounded-3xl max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl relative z-[10000]">
                             <div className="relative">
                                 <img
                                     src={selectedProject.image}

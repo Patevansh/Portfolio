@@ -49,7 +49,7 @@ export default function Education() {
     return (
         <div className="w-full min-h-screen text-gray-600 px-6 py-12 pb-40 bg-transparent">
             {/* Main Content */}
-            <div className="relative z-10 w-full">
+            <div className="relative z-0 w-full">
                 {/* Header - centered */}
                 <div className="mb-16 w-full text-center">
                     <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">

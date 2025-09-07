@@ -10,6 +10,7 @@ import FloatingShapes from './components/FloatingShapes'
 
 export default function App() {
   const [activePage, setActivePage] = useState('home')
+  const [darkMode, setDarkMode] = useState(false)
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -68,12 +69,20 @@ export default function App() {
   }, [])
 
   return (
-    <div className="w-full h-full min-h-screen min-w-screen overflow-x-hidden">
+    <div className={`w-full h-full min-h-screen min-w-screen overflow-x-hidden ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}> 
+      {/* Dark mode toggle button */}
+      <button
+        className={`fixed top-6 right-6 z-50 px-4 py-2 rounded-lg shadow-lg font-semibold transition-colors duration-300 ${darkMode ? 'bg-gray-800 text-gray-100 hover:bg-gray-700' : 'bg-gray-200 text-gray-900 hover:bg-gray-300'}`}
+        onClick={() => setDarkMode((prev) => !prev)}
+        aria-label="Toggle dark mode"
+      >
+        {darkMode ? '🌙 Dark' : '☀️ Light'}
+      </button>
       <nav className="fixed bottom-4 w-full flex justify-center z-50">
         <Dock activePage={activePage} setActivePage={scrollToSection} />
       </nav>
 
-      <div className="relative w-full h-full min-h-screen min-w-screen bg-gradient-to-br from-amber-50/40 via-white to-orange-50/30 overflow-x-hidden text-gray-900 no-scrollbar">
+      <div className={`relative w-full h-full min-h-screen min-w-screen overflow-x-hidden no-scrollbar ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}> 
         <FloatingShapes />
         <section id="home" className="min-h-screen w-full">
           <Home />

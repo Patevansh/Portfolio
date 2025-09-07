@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <div className="w-full min-h-screen text-gray-600 px-6 py-8 pb-32 bg-transparent">
+    <div className="w-full min-h-screen text-gray-600 px-6 py-8 pb-32 bg-gray-100">
             {/* Main Content */}
             <div className="relative z-10 h-full flex flex-col w-full items-center justify-center text-center">
                 {/* Header Section - centered */}
