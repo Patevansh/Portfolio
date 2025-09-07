@@ -28,34 +28,32 @@ export default function Skills() {
   ];
 
   return (
-    <div className="w-full min-h-screen text-gray-600 px-6 py-8 pb-32 relative bg-transparent">
+    <div className="w-full min-h-screen text-gray-600 px-6 py-8 pb-32 bg-transparent">
       {/* Main Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center">
-        {/* Header */}
-        <div className="text-center mb-12">
+      <div className="relative z-10 h-full flex flex-col w-full">
+        {/* Header - centered */}
+        <div className="mb-12 w-full text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-700 mb-4">Skills & Technologies</h1>
           <div className="h-1 w-20 bg-gradient-to-r from-blue-600 to-indigo-700 mx-auto rounded-full"></div>
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
             Here are the technologies and tools I've mastered throughout my development journey
           </p>
         </div>
-
-        {/* Skills Grid */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Skills Grid - spread horizontally */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
-              className="glass-strong rounded-2xl p-8 hover:scale-105 transition-all duration-300"
+              className="glass-strong rounded-2xl p-8 hover:scale-105 transition-all duration-300 w-full"
             >
               <h3 className="text-2xl font-bold text-gray-700 mb-6 text-center">
                 {category.title}
               </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className={`p-4 rounded-xl bg-gradient-to-br ${skill.color} text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
+                    className={`p-4 rounded-xl bg-gradient-to-br ${skill.color} text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full`}
                   >
                     <div className="flex items-center space-x-3">
                       <span className="text-2xl">{skill.icon}</span>
@@ -67,14 +65,13 @@ export default function Skills() {
             </div>
           ))}
         </div>
-
-        {/* Experience Summary */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div className="glass rounded-2xl p-8 text-center">
+        {/* Experience Summary - centered */}
+        <div className="mt-16 w-full">
+          <div className="glass rounded-2xl p-8 text-center w-full">
             <h3 className="text-3xl font-bold text-gray-700 mb-6">Portfolio Highlights</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
               <div className="text-center">
-                <div className="text-4xl mb-2">🎓</div>
+                <div className="text-4xl mb-2">93</div>
                 <div className="text-2xl font-bold text-gray-700">7.92</div>
                 <div className="text-gray-600 text-sm">Current CGPA</div>
               </div>

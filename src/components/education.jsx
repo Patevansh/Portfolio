@@ -47,11 +47,11 @@ export default function Education() {
     ];
 
     return (
-        <div className="w-full min-h-screen text-gray-600 px-6 py-12 pb-40 relative bg-transparent">
+        <div className="w-full min-h-screen text-gray-600 px-6 py-12 pb-40 bg-transparent">
             {/* Main Content */}
-            <div className="relative z-10 max-w-6xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-16">
+            <div className="relative z-10 w-full">
+                {/* Header - centered */}
+                <div className="mb-16 w-full text-center">
                     <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
                         My Education
                     </h2>
@@ -60,24 +60,21 @@ export default function Education() {
                     </p>
                     <div className="h-1 w-20 bg-gradient-to-r from-blue-600 to-indigo-700 mx-auto rounded-full"></div>
                 </div>
-
-                {/* Education Timeline */}
-                <div className="space-y-8">
+                {/* Education Timeline - spread horizontally */}
+                <div className="space-y-8 w-full">
                     {educationData.map((edu, index) => (
-                        <div key={index} className="relative">
+                        <div key={index} className="relative w-full">
                             {/* Timeline line */}
                             {index !== educationData.length - 1 && (
                                 <div className="absolute left-8 top-20 w-0.5 h-32 bg-gradient-to-b from-blue-400 to-indigo-600 hidden md:block"></div>
                             )}
-                            
                             {/* Education Card */}
-                            <div className="glass-strong rounded-3xl p-8 hover:scale-[1.02] transition-all duration-300 relative">
+                            <div className="glass-strong rounded-3xl p-8 hover:scale-[1.02] transition-all duration-300 relative w-full">
                                 {/* Timeline dot */}
                                 <div className="absolute -left-2 top-8 w-4 h-4 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full border-4 border-white shadow-lg hidden md:block"></div>
-                                
-                                <div className="md:ml-8">
-                                    {/* Header */}
-                                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <div className="md:ml-8 w-full">
+                                    {/* Header - centered name/title */}
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 w-full">
                                         <div className="flex-1">
                                             <h3 className="text-2xl font-bold text-gray-800 mb-2">
                                                 {edu.degree}

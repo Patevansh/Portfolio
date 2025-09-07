@@ -44,11 +44,11 @@ export default function Contact() {
     ];
 
     return (
-        <div className="w-full min-h-screen text-gray-600 px-6 py-12 pb-40 relative bg-transparent">
+        <div className="w-full min-h-screen text-gray-600 px-6 py-12 pb-40 bg-transparent">
             {/* Main Content */}
-            <div className="relative z-10 max-w-7xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-16">
+            <div className="relative z-10 w-full">
+                {/* Header - centered */}
+                <div className="mb-16 w-full text-center">
                     <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
                         Get In Touch
                     </h2>
@@ -56,21 +56,20 @@ export default function Contact() {
                         Let's create something amazing together. I'm always open to discussing new opportunities and interesting projects.
                     </p>
                 </div>
-
-                <div className="max-w-4xl mx-auto">
-                    {/* Contact Info */}
-                    <div className="space-y-8">
+                <div className="w-full">
+                    {/* Contact Info - centered title, spread info */}
+                    <div className="space-y-8 w-full">
                         {/* Quick Contact */}
-                        <div className="glass-strong p-8 rounded-3xl">
+                        <div className="glass-strong p-8 rounded-3xl w-full">
                             <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Contact Information</h3>
-                            <div className="space-y-4">
+                            <div className="space-y-4 w-full">
                                 {contactInfo.map((info, index) => (
                                     <a
                                         key={index}
                                         href={info.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center p-4 rounded-2xl hover:bg-gray-50 transition-all duration-300 group"
+                                        className="flex items-center p-4 rounded-2xl hover:bg-gray-50 transition-all duration-300 group w-full"
                                     >
                                         <span className="text-2xl mr-4 group-hover:scale-110 transition-transform duration-300">
                                             {info.icon}

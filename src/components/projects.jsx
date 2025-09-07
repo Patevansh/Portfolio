@@ -38,11 +38,11 @@ export default function Projects() {
     };
 
     return (
-        <div className="w-full min-h-screen text-gray-600 px-6 py-12 pb-40 relative bg-transparent">
+        <div className="w-full min-h-screen text-gray-600 px-6 py-12 pb-40 bg-transparent">
             {/* Main Content */}
-            <div className="relative z-10 max-w-7xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-16">
+            <div className="relative z-10 w-full">
+                {/* Header - centered */}
+                <div className="mb-16 w-full text-center">
                     <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
                         My Projects
                     </h2>
@@ -50,15 +50,14 @@ export default function Projects() {
                         Here's a collection of projects I've worked on, showcasing my skills in various technologies and domains.
                     </p>
                 </div>
-
-                {/* Featured Projects Section */}
-                <div className="mb-16">
+                {/* Featured Projects Section - centered title, spread grid */}
+                <div className="mb-16 w-full">
                     <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Projects</h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
                         {featuredProjects.map((project) => (
                             <div
                                 key={project.id}
-                                className="glass-strong rounded-3xl overflow-hidden hover:scale-[1.02] transition-all duration-300 cursor-pointer group"
+                                className="glass-strong rounded-3xl overflow-hidden hover:scale-[1.02] transition-all duration-300 cursor-pointer group w-full"
                                 onClick={() => openModal(project)}
                             >
                                 <div className="relative overflow-hidden">
