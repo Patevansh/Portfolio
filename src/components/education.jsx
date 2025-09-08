@@ -47,7 +47,7 @@ export default function Education() {
     ];
 
     return (
-        <div className="w-full min-h-screen text-current px-6 py-12 pb-40 bg-transparent">
+    <div className="w-full min-h-screen text-current px-8 md:px-12 lg:px-20 py-12 pb-40 bg-transparent">
             {/* Main Content */}
             <div className="relative z-0 w-full">
                 {/* Header - centered */}
@@ -69,7 +69,7 @@ export default function Education() {
                                 <div className="absolute left-8 top-20 w-0.5 h-32 bg-gradient-to-b from-blue-400 to-indigo-600 hidden md:block"></div>
                             )}
                             {/* Education Card */}
-                            <div className="glass-strong rounded-3xl p-8 hover:scale-[1.02] transition-all duration-300 relative w-full">
+                            <div className="glass-strong education-card rounded-3xl px-8 py-8 md:pr-20 hover:scale-[1.02] transition-all duration-300 relative w-full">
                                 {/* Timeline dot */}
                                 <div className="absolute -left-2 top-8 w-4 h-4 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full border-4 border-white shadow-lg hidden md:block"></div>
                                 <div className="md:ml-8 w-full">
@@ -79,10 +79,10 @@ export default function Education() {
                                             <h3 className="text-2xl font-bold text-current mb-2">
                                                 {edu.degree}
                                             </h3>
-                                            <p className="text-lg font-semibold text-current/90 mb-1">
+                                            <p className="text-lg font-semibold text-current/95 mb-1">
                                                 {edu.institution}
                                             </p>
-                                            <p className="text-current/80 mb-2">
+                                            <p className="text-current/90 mb-2">
                                                 📍 {edu.location}
                                             </p>
                                         </div>
@@ -102,18 +102,18 @@ export default function Education() {
                                     </div>
 
                                     {/* Description */}
-                                    <p className="text-current/80 mb-6 leading-relaxed">
+                                    <p className="text-current/90 mb-6 leading-relaxed">
                                         {edu.description}
                                     </p>
 
                                     {/* Highlights */}
                                     <div>
                                         <h4 className="text-lg font-semibold text-current mb-3">Key Highlights:</h4>
-                                        <div className="grid md:grid-cols-2 gap-3">
+                                            <div className="grid md:grid-cols-2 gap-3">
                                             {edu.highlights.map((highlight, idx) => (
                                                 <div key={idx} className="flex items-center">
-                                                    <span className="w-2 h-2 bg-white/20 rounded-full mr-3"></span>
-                                                    <span className="text-current/80">{highlight}</span>
+                                                    <span className="w-2 h-2 bg-white/40 rounded-full mr-3 highlight-bullet"></span>
+                                                    <span className="text-current/95 highlight-text">{highlight}</span>
                                                 </div>
                                             ))}
                                         </div>
