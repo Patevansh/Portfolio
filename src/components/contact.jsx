@@ -62,21 +62,21 @@ export default function Contact() {
                         {/* Quick Contact */}
                         <div className="glass-strong p-8 rounded-3xl w-full">
                             <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Contact Information</h3>
-                            <div className="space-y-4 w-full">
+                            <div className="w-full flex flex-wrap justify-center gap-6">
                                 {contactInfo.map((info, index) => (
                                     <a
                                         key={index}
                                         href={info.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center p-4 rounded-2xl hover:bg-gray-50 transition-all duration-300 group w-full"
+                                        className="flex flex-col items-center justify-center p-6 rounded-2xl hover:scale-105 transition-all duration-300 group w-full md:w-auto glass-strong"
                                     >
-                                        <span className="text-2xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                                        <span className="text-3xl mb-2 transition-transform duration-300 group-hover:scale-110">
                                             {info.icon}
                                         </span>
-                                        <div>
-                                            <p className="font-semibold text-gray-800">{info.label}</p>
-                                            <p className="text-gray-600">{info.value}</p>
+                                        <div className="text-center">
+                                            <p className="font-semibold text-current">{info.label}</p>
+                                            <p className="text-current/80">{info.value}</p>
                                         </div>
                                     </a>
                                 ))}

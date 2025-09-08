@@ -7,6 +7,41 @@ html {
   height: 100vh;
 }
 
+  /* Page frame: keep spacing and rounded corners but avoid opaque overlay */
+  .page-frame {
+    background: transparent; /* fully transparent so page background shows through */
+    background-clip: padding-box;
+    border: none;
+    padding: 1.25rem;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  /* Light theme: remove any visible tint or shadow so content sits flush with page */
+  :root:not(.cyber-theme) .page-frame {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* Cyber theme: keep a very subtle dark tint, but low opacity so it doesn't feel like an overlay */
+  .cyber-theme .page-frame {
+    background: transparent; /* allow full dark background to show through */
+    box-shadow: none;
+    border-radius: 0; /* remove rounded corners so it's full-bleed */
+    margin: 0; /* remove any wrapper margins */
+    padding: 1.25rem 1.25rem 2rem 1.25rem; /* keep vertical spacing but allow edges to touch */
+  }
+
+  /* Mobile: reduce padding and disable blur/shadow for better performance and a flat look */
+  @media (max-width: 640px) {
+    .page-frame {
+      padding: 0.75rem;
+      backdrop-filter: none;
+      box-shadow: none;
+      background: transparent;
+    }
+  }
+
 body {
   overflow-x: hidden;
   width: 100vw;
@@ -160,3 +195,138 @@ body {
   z-index: 0;
   opacity: 0.15;
 }
+
+/* Cyberneon theme */
+:root {
+  --cyber-bg: #04050a;
+  --cyber-card: rgba(255,255,255,0.03);
+  --cyber-card-2: rgba(255,255,255,0.04);
+  --cyber-text: #dffcff;
+  --cyber-muted: #9bdcff;
+  --neon-cyan: #00f0ff;
+  --neon-magenta: #ff3ecb;
+  --neon-violet: #8a5cff;
+  --neon-green: #3eff8f;
+  --neon-glow: 0 6px 30px rgba(0, 240, 255, 0.12);
+}
+
+.cyber-theme {
+  background: radial-gradient(ellipse at 20% 10%, rgba(0,240,255,0.03), transparent 10%), radial-gradient(ellipse at 90% 80%, rgba(255,62,203,0.02), transparent 12%), var(--cyber-bg) !important;
+  color: var(--cyber-text) !important;
+}
+
+/* Cards / glass surfaces */
+.cyber-theme .glass-strong,
+.cyber-theme .glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(0,240,255,0.06);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6), var(--neon-glow);
+  color: var(--cyber-text);
+}
+
+.cyber-theme h1, .cyber-theme h2, .cyber-theme h3, .cyber-theme h4, .cyber-theme h5 {
+  color: var(--cyber-text) !important;
+  text-shadow: 0 2px 12px rgba(0,240,255,0.06), 0 1px 6px rgba(138,92,255,0.04);
+}
+
+.cyber-theme p, .cyber-theme a, .cyber-theme li {
+  color: var(--cyber-muted) !important;
+}
+
+/* Neon badges / buttons */
+.cyber-theme .btn-neon {
+  background: linear-gradient(90deg, rgba(0,240,255,0.12), rgba(255,62,203,0.08));
+  border: 1px solid rgba(0,240,255,0.18);
+  color: var(--cyber-text);
+  box-shadow: 0 6px 28px rgba(0,240,255,0.06), 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.cyber-theme .badge-neon {
+  background: rgba(0,240,255,0.06);
+  color: var(--neon-cyan);
+  border: 1px solid rgba(0,240,255,0.12);
+  box-shadow: 0 4px 18px rgba(0,240,255,0.06);
+}
+
+/* strong neon outline for focused elements */
+.cyber-theme .neon-outline:focus, .cyber-theme .neon-outline:hover {
+  outline: none;
+  box-shadow: 0 0 18px rgba(0,240,255,0.14), 0 0 40px rgba(138,92,255,0.06);
+  border-color: rgba(0,240,255,0.22);
+}
+
+.cyber-theme .dock, .cyber-theme nav, .cyber-theme .fixed {
+  z-index: 60;
+}
+
+/* Dock: increase blur and use a subtle dark tint so it's visibly frosted in cyber theme */
+.dock {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.02);
+  transition: backdrop-filter 200ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+
+.cyber-theme .dock {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: linear-gradient(90deg, rgba(7,10,23,0.55), rgba(7,10,23,0.45));
+  box-shadow: 0 10px 60px rgba(0,240,255,0.06), 0 6px 30px rgba(0,0,0,0.6);
+}
+
+/* Light theme: make dock more visible against a white page background */
+:root:not(.cyber-theme) .dock {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.92); /* solid enough to contrast with page */
+  color: #0f172a; /* darker text for legibility */
+  border: 1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.06);
+}
+
+/* Make icon tooltips readable on light theme */
+:root:not(.cyber-theme) .dock a span.absolute {
+  background: rgba(15,23,42,0.9);
+  color: #fff;
+  border: none;
+}
+
+/* Make tooltips and focused items slightly more blurred so they read as frosted */
+.dock a .group .absolute, .dock a .group .backdrop-blur-md {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Floating shapes get tinted glow in cyber theme */
+.cyber-theme .bg-shape { opacity: 0.08; }
+.cyber-theme .bg-shape--1 { background: radial-gradient(circle at center, rgba(0,240,255,0.18), transparent 40%); }
+.cyber-theme .bg-shape--2 { background: radial-gradient(circle at center, rgba(138,92,255,0.12), transparent 40%); }
+
+/* Modal card in cyber theme */
+.cyber-theme .modal-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(0,240,255,0.06);
+  color: var(--cyber-text);
+}
+
+.cyber-theme .modal-card .p-8 {
+  color: var(--cyber-text);
+}
+
+/* Dock neon icon colors */
+.icon-wrap { display:inline-flex; align-items:center; justify-content:center; padding:8px; border-radius:12px; font-size:1.25rem; line-height:1; }
+.icon-wrap svg { width:1.25em; height:1.25em; }
+.icon-cyan { color: var(--neon-cyan); background: linear-gradient(180deg, rgba(0,240,255,0.06), rgba(0,240,255,0.02)); border:1px solid rgba(0,240,255,0.12); }
+.icon-magenta { color: var(--neon-magenta); background: linear-gradient(180deg, rgba(255,62,203,0.06), rgba(255,62,203,0.02)); border:1px solid rgba(255,62,203,0.12); }
+.icon-violet { color: var(--neon-violet); background: linear-gradient(180deg, rgba(138,92,255,0.06), rgba(138,92,255,0.02)); border:1px solid rgba(138,92,255,0.12); }
+.icon-green { color: var(--neon-green); background: linear-gradient(180deg, rgba(62,255,143,0.06), rgba(62,255,143,0.02)); border:1px solid rgba(62,255,143,0.12); }
+.icon-amber { color: #ffd166; background: linear-gradient(180deg, rgba(255,209,102,0.06), rgba(255,209,102,0.02)); border:1px solid rgba(255,209,102,0.12); }
+.icon-pink { color: #ff7ab6; background: linear-gradient(180deg, rgba(255,122,182,0.06), rgba(255,122,182,0.02)); border:1px solid rgba(255,122,182,0.12); }
+
+.neon-glow-cyan { box-shadow: 0 8px 40px rgba(0,240,255,0.12), inset 0 1px 0 rgba(255,255,255,0.02); }
+.neon-glow-magenta { box-shadow: 0 8px 40px rgba(255,62,203,0.12), inset 0 1px 0 rgba(255,255,255,0.02); }
+.neon-glow-violet { box-shadow: 0 8px 40px rgba(138,92,255,0.10), inset 0 1px 0 rgba(255,255,255,0.02); }
+.neon-glow-green { box-shadow: 0 8px 40px rgba(62,255,143,0.10), inset 0 1px 0 rgba(255,255,255,0.02); }
+.neon-glow-amber { box-shadow: 0 8px 40px rgba(255,209,102,0.10), inset 0 1px 0 rgba(255,255,255,0.02); }
+.neon-glow-pink { box-shadow: 0 8px 40px rgba(255,122,182,0.10), inset 0 1px 0 rgba(255,255,255,0.02); }
+

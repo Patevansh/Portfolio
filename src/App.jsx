@@ -12,6 +12,19 @@ export default function App() {
   const [activePage, setActivePage] = useState('home')
   const [darkMode, setDarkMode] = useState(false)
 
+  useEffect(() => {
+    // apply cyber-theme to document root so background covers whole page
+    if (darkMode) {
+      document.documentElement.classList.add('cyber-theme')
+    } else {
+      document.documentElement.classList.remove('cyber-theme')
+    }
+
+    return () => {
+      document.documentElement.classList.remove('cyber-theme')
+    }
+  }, [darkMode])
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -69,7 +82,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className={`w-full h-full min-h-screen min-w-screen overflow-x-hidden ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}> 
+    <div className={`w-full h-full min-h-screen min-w-screen overflow-x-hidden ${darkMode ? 'cyber-theme' : ''}`}> 
       {/* Dark mode toggle button */}
       <button
         className={`fixed top-6 right-6 z-50 px-4 py-2 rounded-lg shadow-lg font-semibold transition-colors duration-300 ${darkMode ? 'bg-gray-800 text-gray-100 hover:bg-gray-700' : 'bg-gray-200 text-gray-900 hover:bg-gray-300'}`}
@@ -82,8 +95,9 @@ export default function App() {
         <Dock activePage={activePage} setActivePage={scrollToSection} />
       </nav>
 
-      <div className={`relative w-full h-full min-h-screen min-w-screen overflow-x-hidden no-scrollbar ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}> 
-        <FloatingShapes />
+      <div className={`relative w-full h-full min-h-screen min-w-screen overflow-x-hidden no-scrollbar ${darkMode ? 'bg-transparent text-gray-100' : 'bg-gray-100 text-gray-900'}`}> 
+  <div className="page-frame">
+          <FloatingShapes />
         <section id="home" className="min-h-screen w-full">
           <Home />
         </section>
@@ -102,6 +116,7 @@ export default function App() {
         <section id="contact" className="min-h-screen w-full pb-32">
           <Contact />
         </section>
+        </div>
       </div>
     </div>
   )
